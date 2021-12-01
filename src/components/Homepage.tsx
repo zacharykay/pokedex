@@ -3,8 +3,8 @@ import { PokemonData } from "../util/interfaces";
 import { convertUnits } from "../util/conversionFunctions";
 import EvolutionaryTree from "./EvolutionaryTree";
 import { useDataContext } from "../contexts/data_context";
-
-import { pokemonList } from "../data/pokemonList";
+import SearchForm from "./SearchForm";
+import ChangePokemon from "./ChangePokemon";
 
 const Homepage: FC<PokemonData> = (pokemonData) => {
   const {
@@ -19,74 +19,19 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
     sprites,
   } = pokemonData;
 
-  const {
-    pokemonSearch,
-    setPokemonSearch,
-    setSearchTerm,
-    showEvolutions,
-    setShowEvolutions,
-  } = useDataContext();
+  const { showEvolutions, setShowEvolutions } = useDataContext();
 
   const [ metricUnits, setMetricUnits ] = useState(false);
   const [ showShiny, setShowShiny ] = useState(false);
 
-  const [ searchError, setSearchError ] = useState(false);
-
+  // Imported Function with custom names for returning height and weight
   const [ metric, imperial ] = convertUnits(height, weight);
-
-  const searchForPokemon = async (e: any) => {
-    e.preventDefault();
-
-    // Sanitize search term
-    const searchQuery = pokemonSearch.trim().toLowerCase();
-
-    // Check if search term is Number format and if so set as search query
-    let pokemonNumberSearch = false;
-    if (pokemonSearch == parseInt(pokemonSearch)) {
-      const pokemonNumber: number = parseInt(pokemonSearch);
-      if (pokemonNumber >= 1 && pokemonNumber <= 898) {
-        pokemonNumberSearch = true;
-      }
-    }
-
-    // Capitalize search term to check spelling against database of existing Pokemon
-    const validationTerm = searchQuery.charAt(0).toUpperCase() + searchQuery.slice(1);
-    const searchValidation = pokemonList.find((pokemon) => pokemon === validationTerm);
-
-    // If validated, set search term globally otherwise show error
-    if (searchValidation || pokemonNumberSearch) {
-      setSearchTerm(searchQuery);
-      setPokemonSearch("");
-    } else {
-      setSearchError(true);
-    }
-  };
 
   return (
     <main>
       {/* Search for a Pokemon Form */}
-      <section className="search-form">
-        <form onSubmit={(e) => e.preventDefault()}>
-          <label htmlFor="search">Search for a Pokemon</label>
-          <input
-            style={{ display: "block" }}
-            type="text"
-            placeholder="Type Name or #"
-            value={pokemonSearch}
-            onChange={(e) => {
-              setSearchError(false);
-              setPokemonSearch(e.target.value);
-            }}
-          />
-          <button onClick={(e) => searchForPokemon(e)}>Search</button>
-          {searchError && (
-            <p>
-              Pokemon does not exist... Please check spelling or try a number between 1 -
-              898.
-            </p>
-          )}
-        </form>
-      </section>
+      <SearchForm />
+      <ChangePokemon id={id} />
 
       {/* Titlecard */}
       <section className="titlecard">

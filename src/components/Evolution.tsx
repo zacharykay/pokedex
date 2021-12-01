@@ -10,7 +10,7 @@ interface Evolution {
 }
 
 const Evolution: FC<Evolution> = ({ name, img, url, id, arrow }) => {
-  const { setSearchTerm, setShowEvolutions } = useDataContext();
+  const { setSearchTerm } = useDataContext();
 
   return (
     <div
@@ -23,7 +23,6 @@ const Evolution: FC<Evolution> = ({ name, img, url, id, arrow }) => {
         onClick={(e) => {
           e.preventDefault();
           setSearchTerm(id.toString());
-          setShowEvolutions(false);
         }}
       >
         <img src={img} alt={`${name} Sprite`} />
