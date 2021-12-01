@@ -1,0 +1,5 @@
+export enum ActionKind {
+  UPDATE_FILTERS = "UPDATE_FILTERS",
+  APPLY_FILTERS = "APPLY_FILTERS",
+  LOAD_TOURS = "LOAD_TOURS",
+}

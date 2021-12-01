@@ -2,7 +2,8 @@ import { useState, useEffect, FC } from "react";
 import axios from "axios";
 import Homepage from "../components/Homepage";
 import Loading from "../Loading";
-import { PokemonData } from "../interfaces";
+import { PokemonData } from "../util/interfaces";
+import { useDataContext } from "../contexts/data_context";
 
 interface Props {}
 
@@ -11,6 +12,8 @@ const Home: FC<Props> = () => {
   // const [ pokemonData, setPokemonData ] = useState([] as any);
   const [ dataLoading, setDataLoading ] = useState(true);
 
+  const { searchTerm, setSearchTerm } = useDataContext();
+
   const baseUrl: string = "https://pokeapi.co/api/v2";
   const speciesDataUrl: string = "pokemon-species";
 
@@ -18,11 +21,9 @@ const Home: FC<Props> = () => {
     return `${baseUrl}/${midpoint}/${id}`;
   };
 
-  // const testPokemon: string = 'charizard'
-
   const fetchData = async (
-    category: string = "pokemon",
-    endpoint: string = "charizard"
+    endpoint: string = "charizard",
+    category: string = "pokemon"
   ) => {
     const fetchUrl: string = `${baseUrl}/${category}/${endpoint}`;
 
@@ -95,6 +96,7 @@ const Home: FC<Props> = () => {
       const speciesId = speciesLink
         .replace("https://pokeapi.co/api/v2/pokemon-species/", "")
         .slice(0, -1);
+      console.log("speciesId", speciesId);
       return speciesId;
     };
 
@@ -115,19 +117,14 @@ const Home: FC<Props> = () => {
         const data = await res.data;
         const image_url = data.sprites.front_default;
 
+        evolutions[index].id = id;
         evolutions[index].img = image_url;
       }
     });
 
-    // const evolutions: any[] = [firstEvolution, secondEvolution, thirdEvolution];
-
-    // const evo = firstEvolution.url
-    //   .replace("https://pokeapi.co/api/v2/pokemon-species/", "")
-    //   .slice(0, -1);
-    // console.log("EVO", evo);
-
     // Assign Pokemon to Evolution Chain spots, if they exist
     const currentPokemon = evolutions[pokemonIndex];
+    currentPokemon.id = pokemonId;
 
     const firstPreEv = evolutions[pokemonIndex - 2] ? evolutions[pokemonIndex - 2] : null;
     const preEv = evolutions[pokemonIndex - 1] ? evolutions[pokemonIndex - 1] : null;
@@ -142,16 +139,17 @@ const Home: FC<Props> = () => {
       lastNextEv,
     };
 
-    console.log("EVOLUTIONS", evolutions, "EVOLUTION_CHAIN", evolutionChain);
-
     setPokemonData({ description, pokemonTypes, preEvolution, evolutionChain, ...data });
     setDataLoading(false);
     return data;
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  useEffect(
+    () => {
+      fetchData(searchTerm);
+    },
+    [ searchTerm, setSearchTerm ]
+  );
 
   if (dataLoading) {
     return <Loading />;

@@ -8,6 +8,12 @@
   display: flex;
 }
 
+.evolution-block:hover {
+  cursor: pointer;
+  size: 115%;
+  background-color: #ddd;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
