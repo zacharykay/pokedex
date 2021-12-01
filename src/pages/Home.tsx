@@ -31,6 +31,9 @@ const Home: FC<Props> = () => {
     const response = await axios.get(fetchUrl);
     const data = await response.data;
 
+    // Set Pokemon name based on species.name
+    const name = data.species.name;
+
     // Map Pokemon types to simpler array
     const pokemonTypes = data.types.map((pokemonType: any) => {
       return {
@@ -39,11 +42,28 @@ const Home: FC<Props> = () => {
       };
     });
 
+    // API Flavor Text / Description Field Format
+    interface FlavorText {
+      flavor_text: string;
+      language: {
+        name: string;
+        url: string;
+      };
+      version: {
+        name: string;
+        url: string;
+      };
+    }
     // Fetch Pokemon Description Field
     const pokemonId = data.id;
     const descResponse = await axios.get(speciesDataFetch(speciesDataUrl, pokemonId));
     const descData = await descResponse.data;
-    const description: string = descData.flavor_text_entries[0].flavor_text;
+    const descriptions = descData.flavor_text_entries.filter((entry: FlavorText) => {
+      return entry.language.name === "en";
+    });
+    const description: string = descriptions[0].flavor_text
+      .replace("POKéMON", "Pokémon")
+      .replace("STONEs", "stones");
 
     // Extract Pokemon Pre-evolution data from speciesData
     const evolvesFrom: { name: string; url: string } | null =
@@ -68,6 +88,10 @@ const Home: FC<Props> = () => {
       name: ev1.name,
       url: ev1.url,
     };
+
+    evolutionData.chain.evolves_to.length > 1
+      ? console.log("LENGTH MORE THAN ONE", evolutionData.chain.evolves_to.length)
+      : console.log("ONE OR NONE", evolutionData.chain.evolves_to.length);
 
     const evolution2: any | null = evolutionData.chain.evolves_to[0];
     const evolution3: any | null = evolution2
@@ -139,7 +163,14 @@ const Home: FC<Props> = () => {
       lastNextEv,
     };
 
-    setPokemonData({ description, pokemonTypes, preEvolution, evolutionChain, ...data });
+    setPokemonData({
+      name,
+      description,
+      pokemonTypes,
+      preEvolution,
+      evolutionChain,
+      ...data,
+    });
     setDataLoading(false);
     return data;
   };

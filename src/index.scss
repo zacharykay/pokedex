@@ -14,6 +14,17 @@
   background-color: #ddd;
 }
 
+.types ul {
+  list-style-type: none;
+  display: flex;
+
+  li {
+    color: white;
+    font-family: Roboto, sans-serif;
+    padding: 1rem;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',

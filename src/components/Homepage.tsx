@@ -6,6 +6,8 @@ import { useDataContext } from "../contexts/data_context";
 import SearchForm from "./SearchForm";
 import ChangePokemon from "./ChangePokemon";
 
+import { pokemonTypes as pokeTypes } from "../data/pokemonTypes";
+
 const Homepage: FC<PokemonData> = (pokemonData) => {
   const {
     name,
@@ -74,11 +76,12 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
       <section className="types">
         <ul>
           {pokemonTypes.map((pokemonType, index) => {
+            let typeRecord: Record<string, string> = pokeTypes;
+            let typeColor: string = typeRecord[pokemonType.type];
+            let divStyle: { backgroundColor: string } = { backgroundColor: typeColor };
             return (
-              <li key={index}>
-                <a href={pokemonType.url} className="capitalize">
-                  {pokemonType.type}
-                </a>
+              <li key={index} className="capitalize" style={divStyle}>
+                {pokemonType.type}
               </li>
             );
           })}

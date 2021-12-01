@@ -19,7 +19,7 @@ const ChangePokemon: FC<Props> = ({ id }) => {
       setSearchTerm(newPokemonId.toString());
     }
     if (direction === "random") {
-      newPokemonId = (Math.random() * 898).toFixed();
+      newPokemonId = (Math.random() * 897 + 1).toFixed();
       setSearchTerm(newPokemonId.toString());
     }
   }
