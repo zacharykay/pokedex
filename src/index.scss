@@ -17,6 +17,7 @@ main {
   max-width: 50vw;
   height: 100vh;
   margin: 0 auto;
+  position: relative;
 }
 
 article {
@@ -59,10 +60,14 @@ nav {
     label {
     }
     input {
+      height: 30px;
       width: 300px;
       text-align: center;
+      font-size: 1rem;
+      outline: none;
     }
     button {
+      height: 30px;
     }
     p.incorrect-search-text {
       color: red;
@@ -76,21 +81,71 @@ nav {
   }
 }
 
+.convert-units-btn,
+.toggle-shiny-btn {
+  position: absolute;
+  width: 150px;
+  height: 36px;
+  font-size: 1rem;
+  color: white;
+  background-color: black;
+  border-radius: 12px;
+}
+
+.convert-units-btn {
+  bottom: 30px;
+  left: 30%;
+}
+
+.toggle-shiny-btn {
+  bottom: 30px;
+  right: 30%;
+}
+
+// Pokedex Embellishments
+.blue-ball {
+  background-color: #27abfc;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  border: 5px solid #d6d6d6;
+}
+
 // *****************************************  Sections  ******************************************** //
 
 // Title Card -------- Pokeball Sprite - Pokemon Name - Pokemon Number
 .titlecard {
-  display: flex;
-
-  .pokeball-sprite {
-    width: 70px;
-    height: 70px;
-  }
-  .vertically-center {
-    h1 {
-      font-size: 2.4rem;
+  margin-left: auto;
+  margin-right: .5rem;
+  margin-top: .5rem;
+  width: 80%;
+  border: 3px darkgray solid;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 1px black;
+  box-sizing: content-box;
+  .flexbox {
+    .pokeball-sprite {
+      width: 70px;
+      height: 70px;
+      margin-top: -15px;
+    }
+    .vertically-center {
+      h1 {
+        font-size: 2rem;
+      }
     }
   }
+  .genus {
+    text-align: right;
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+
+  // Genus ------ Genera data description
 }
 
 // Pokemon Images / Sprites  ------ (Regular & Shiny)
@@ -118,6 +173,10 @@ nav {
     display: flex;
 
     li {
+      margin: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid black;
+      box-shadow: 0 0 2px 1px black;
       font-weight: 800;
       text-transform: uppercase;
       font-size: 1.1rem;
@@ -127,12 +186,6 @@ nav {
       min-width: 3rem;
       padding: 0.5rem 1rem;
     }
-  }
-}
-
-// Genus ------ Genera data description
-.genus {
-  h3 {
   }
 }
 
@@ -150,6 +203,9 @@ nav {
 
 // Description ------ Pokemon description paragraph
 .description {
+  border-radius: 5px;
+  margin: 0.5rem;
+  padding: 0.5rem;
   p {
   }
 }
@@ -164,6 +220,14 @@ nav {
 .evolutionary-tree {
   button {
   }
+}
+
+// Super Section for Types & Measurements Flexbox
+.types-measurements {
+  margin-top: 1rem;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
 }
 
 // ******************************************* Div Subsections ***************************************** //

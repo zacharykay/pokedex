@@ -29,12 +29,12 @@ export const convertImperial = (decimeters: number, hectograms: number): Units =
 // Metric Conversions
 export const convertDecimetersToMeters = (decimeters: number): string => {
   const meters: number = decimeters / 10;
-  return `${meters.toFixed(2)} meters`;
+  return `${meters.toFixed(1)} meters`;
 }
 
 export const convertHectogramsToKilograms = (hectograms: number): string => {
   const kilograms: number = hectograms / 10;
-  return `${kilograms.toFixed(2)} kg`
+  return `${kilograms.toFixed(1)} kg`
 }
 
 export const convertMetric = (decimeters: number, hectograms: number): Units => {

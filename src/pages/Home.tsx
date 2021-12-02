@@ -12,7 +12,7 @@ const Home: FC<Props> = () => {
   const [ pokemonData, setPokemonData ] = useState<PokemonData | null>(null);
   const [ dataLoading, setDataLoading ] = useState(true);
 
-  const { searchTerm, setSearchTerm, setShowEvolutions } = useDataContext();
+  const { searchTerm, setSearchTerm, setShowEvolutions, setShowShiny } = useDataContext();
 
   const baseUrl: string = "https://pokeapi.co/api/v2";
   const speciesDataUrlPostfix: string = "-species";
@@ -97,6 +97,7 @@ const Home: FC<Props> = () => {
   useEffect(
     () => {
       fetchData(searchTerm);
+      setShowShiny(false);
       setShowEvolutions(false);
     },
     [ searchTerm, setSearchTerm ]

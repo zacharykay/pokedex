@@ -15,6 +15,7 @@ export const DataProvider: FC = ({ children }) => {
   const [ pokemonSearch, setPokemonSearch ] = useState("");
   const [ searchTerm, setSearchTerm ] = useState(randomPokemonNumber());
   const [ showEvolutions, setShowEvolutions ] = useState(false);
+  const [ showShiny, setShowShiny ] = useState(false);
 
   return (
     <DataContext.Provider
@@ -26,6 +27,8 @@ export const DataProvider: FC = ({ children }) => {
         setSearchTerm,
         showEvolutions,
         setShowEvolutions,
+        showShiny,
+        setShowShiny,
         randomPokemonNumber,
       }}
     >

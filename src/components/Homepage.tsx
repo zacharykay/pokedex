@@ -23,10 +23,10 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
     sprites,
   } = pokemonData;
 
-  const { showEvolutions, setShowEvolutions } = useDataContext();
+  const { showEvolutions, setShowEvolutions, showShiny, setShowShiny } = useDataContext();
 
   const [ metricUnits, setMetricUnits ] = useState(false);
-  const [ showShiny, setShowShiny ] = useState(false);
+  // const [ showShiny, setShowShiny ] = useState(false);
 
   // Imported Function with custom names for returning height and weight
   const [ metric, imperial ] = convertUnits(height, weight);
@@ -50,6 +50,8 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
 
   return (
     <main>
+      <div className="blue-ball" />
+
       {/* Search for a Pokemon Form */}
       <nav>
         <SearchForm />
@@ -59,93 +61,115 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
       <article style={{ border: `10px solid ${themeColor1}` }}>
         {/* Titlecard */}
         <section className="titlecard">
-          {/* // style={{ */}
-          {/* //   borderBottom: `10px solid ${themeColor2 ? themeColor2 : themeColor1}`,
+          <div className="flexbox" style={{ backgroundColor: themeColor1 }}>
+            {/* // style={{ */}
+            {/* //   borderBottom: `10px solid ${themeColor2 ? themeColor2 : themeColor1}`,
         // }} */}
-          <img className="pokeball-sprite" src={pokeball} alt="8-bit pokeball" />
-          <div className="vertically-center">
-            <h1 className="capitalize">
-              No. {addZerosToId(id)} {name}
-            </h1>
+            <img className="pokeball-sprite" src={pokeball} alt="8-bit pokeball" />
+            <div className="vertically-center">
+              <h1 className="capitalize">
+                No. {addZerosToId(id)} {name}
+              </h1>
+            </div>
+          </div>
+
+          {/* Genus Data */}
+          <div className="genus">
+            <h2>{genus}</h2>
           </div>
         </section>
 
-        {/* Pokemon Images / Sprites */}
-        <section className="sprites">
-          <div className="flexbox">
-            {
-              <img
-                src={sprites.front_default}
-                alt="Pokemon Sprite Image"
-                style={{ display: showShiny ? "none" : "block" }}
-                className="pokemon-sprite"
-              />
-            }
-            {sprites.front_shiny && (
-              <img
-                src={sprites.front_shiny}
-                alt="Pokemon Shiny Sprite Image"
-                style={{ display: showShiny ? "block" : "none" }}
-              />
-            )}
+        <div className="flexbox" style={{ justifyContent: "space-around" }}>
+          {/* Pokemon Images / Sprites */}
+          <section className="sprites">
+            <div className="flexbox">
+              {
+                <img
+                  src={sprites.front_default}
+                  alt="Pokemon Sprite Image"
+                  style={{ display: showShiny ? "none" : "block" }}
+                  className="pokemon-sprite"
+                />
+              }
+              {sprites.front_shiny && (
+                <img
+                  src={sprites.front_shiny}
+                  alt="Pokemon Shiny Sprite Image"
+                  style={{ display: showShiny ? "block" : "none" }}
+                />
+              )}
+            </div>
+          </section>
+          <div className="flexbox types-measurements">
+            {/* List Pokemon's types (Max: 2) */}
+            <section className="types">
+              <ul>
+                {pokemonTypes.map((pokemonType, index) => {
+                  // typeColors mapped at Top and will have same corresponding index
+                  let divStyle: { backgroundColor: string } = {
+                    backgroundColor: typeColors[index],
+                  };
+                  return (
+                    <li key={index} className="capitalize" style={divStyle}>
+                      {pokemonType.type}
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+            {/* Height & Weight */}
+            <section className="measurements">
+              {/* Display Converted Height and Weight units */}
+              <div className="flexbox">
+                <h3>Height: {metricUnits ? metric.height : imperial.height}</h3>
+                <h3>Weight: {metricUnits ? metric.weight : imperial.weight}</h3>
+              </div>
+            </section>
           </div>
-        </section>
+        </div>
 
         {/* Toggle to show regular or shiny version of Pokemon */}
-        <section className="toggle-sprite">
-          <button
+        {/* <section className="toggle-sprite"> */}
+        {/* <button
             onClick={(e) => {
               e.preventDefault();
               setShowShiny(!showShiny);
             }}
           >
             {showShiny ? "Show Normal Form" : "Show Shiny Form"}
-          </button>
-        </section>
-
-        {/* List Pokemon's types (Max: 2) */}
-        <section className="types">
-          <ul>
-            {pokemonTypes.map((pokemonType, index) => {
-              // typeColors mapped at Top and will have same corresponding index
-              let divStyle: { backgroundColor: string } = {
-                backgroundColor: typeColors[index],
-              };
-              return (
-                <li key={index} className="capitalize" style={divStyle}>
-                  {pokemonType.type}
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-
-        {/* Genus Data */}
-        <section className="genus">
-          <h3>{genus}</h3>
-        </section>
+          </button> */}
+        {/* </section> */}
 
         {/* Height & Weight */}
-        <section className="measurements">
-          {/* Display Converted Height and Weight units */}
-          <div className="flexbox">
+        {/* <section className="measurements"> */}
+        {/* Display Converted Height and Weight units */}
+        {/* <div className="flexbox">
             <h3>Height: {metricUnits ? metric.height : imperial.height}</h3>
             <h3>Weight: {metricUnits ? metric.weight : imperial.weight}</h3>
-          </div>
+          </div> */}
 
-          {/* Toggle between Imperial and Metric units for height and weight */}
-          <button
+        {/* Toggle between Imperial and Metric units for height and weight */}
+        {/* <button
             onClick={(e) => {
               e.preventDefault();
               setMetricUnits(!metricUnits);
             }}
           >
             Change Units
-          </button>
-        </section>
+          </button> */}
+        {/* </section> */}
 
         {/* Pokedex description from first game Pokemon appears in */}
-        <section className="description">
+        <section
+          className="description"
+          style={{
+            borderTop: `3px solid ${themeColor1}`,
+            borderBottom: `3px solid ${themeColor1}`,
+            borderLeft: `12px solid ${themeColor1}`,
+            borderRight: `12px solid ${themeColor1}`,
+            outline: `4px solid ${themeColor2 ? themeColor2 : "darkgrey"}`,
+          }}
+        >
           <p>{description}</p>
         </section>
 
@@ -177,6 +201,28 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
           </section>
         )}
       </article>
+
+      {/* Toggle Shiny Button */}
+      <button
+        className="toggle-shiny-btn"
+        onClick={(e) => {
+          e.preventDefault();
+          setShowShiny(!showShiny);
+        }}
+      >
+        {showShiny ? "Show Normal Form" : "Show Shiny Form"}
+      </button>
+
+      {/* Toggle between Imperial and Metric units for height and weight */}
+      <button
+        className="convert-units-btn"
+        onClick={(e) => {
+          e.preventDefault();
+          setMetricUnits(!metricUnits);
+        }}
+      >
+        Change Units
+      </button>
     </main>
   );
 };
