@@ -38,13 +38,12 @@ const SearchForm = () => {
     }
   };
   return (
-    <section className="search-form">
+    <div className="search-form">
       <form onSubmit={(e) => e.preventDefault()}>
-        <label htmlFor="search">Search for a Pokemon</label>
+        {/* <label htmlFor="search">Search for a Pokemon</label> */}
         <input
-          style={{ display: "block" }}
           type="text"
-          placeholder="Type Name or #"
+          placeholder="Search for Pokemon by Name or #"
           value={pokemonSearch}
           onChange={(e) => {
             setSearchError(false);
@@ -53,13 +52,13 @@ const SearchForm = () => {
         />
         <button onClick={(e) => searchForPokemon(e)}>Search</button>
         {searchError && (
-          <p>
+          <p className="incorrect-search-text">
             Pokemon does not exist... Please check spelling or try a number between 1 -
             898.
           </p>
         )}
       </form>
-    </section>
+    </div>
   );
 };
 

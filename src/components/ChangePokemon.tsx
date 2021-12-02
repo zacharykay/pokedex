@@ -5,11 +5,11 @@ interface Props {
   id: number;
 }
 
-const ChangePokemon: FC<Props> = ({ id }) => {
-  const { setSearchTerm } = useDataContext();
+export const ChangePokemon: FC<Props> = ({ id }) => {
+  const { setSearchTerm, randomPokemonNumber } = useDataContext();
   function changeCurrentPokemon(e: any, direction: string) {
     e.preventDefault();
-    let newPokemonId: number | string | undefined;
+    let newPokemonId: number | string;
     if (direction === "previous" && id > 1) {
       newPokemonId = id - 1;
       setSearchTerm(newPokemonId.toString());
@@ -19,20 +19,18 @@ const ChangePokemon: FC<Props> = ({ id }) => {
       setSearchTerm(newPokemonId.toString());
     }
     if (direction === "random") {
-      newPokemonId = (Math.random() * 897 + 1).toFixed();
+      newPokemonId = randomPokemonNumber();
       setSearchTerm(newPokemonId.toString());
     }
   }
 
   return (
-    <section className="change-pokemon">
+    <div className="change-pokemon">
       <button onClick={(e) => changeCurrentPokemon(e, "previous")}>
         Previous Pokemon
       </button>
       <button onClick={(e) => changeCurrentPokemon(e, "random")}>Random Pokemon</button>
       <button onClick={(e) => changeCurrentPokemon(e, "next")}>Next Pokemon</button>
-    </section>
+    </div>
   );
 };
-
-export default ChangePokemon;

@@ -9,7 +9,7 @@ interface Units {
 export const convertDecimetersToFeet = (decimeters: number): string => {
   const inches: number = decimeters * 3.937;
   const feet: number = inches / 12;
-  // console.log("FEET", feet, inches);
+
   return `${feet.toFixed()}' ${(inches % 12).toFixed()}"`;
 };
 
@@ -56,17 +56,19 @@ export const convertUnits = (decimeters: number, hectograms: number): Units[] =>
   ]
   // Returns Array where [0: Metric Units, 1: Imperial Units]
 }
-// export const convertUnitsObject = (decimeters: number, hectograms: number): {} => {
-//   return {
-//     metric: {
-//       height: convertDecimetersToMeters(decimeters),
-//       weight: convertHectogramsToKilograms(hectograms)
-//     },
-//     imperial: {
-//       height: convertDecimetersToFeet(decimeters),
-//       weight: convertHectogramsToPounds(hectograms)
-//     }
-//   }
+
+// Object Version of convertUnitsEquation
+export const convertUnitsObject = (decimeters: number, hectograms: number): {} => {
+  return {
+    metric: {
+      height: convertDecimetersToMeters(decimeters),
+      weight: convertHectogramsToKilograms(hectograms)
+    },
+    imperial: {
+      height: convertDecimetersToFeet(decimeters),
+      weight: convertHectogramsToPounds(hectograms)
+    }
+  }
   
-//   // Returns object where {metric: Metric Units, imperial: Imperial Units}
-// }
+  // Returns object where {metric: Metric Units, imperial: Imperial Units}
+}

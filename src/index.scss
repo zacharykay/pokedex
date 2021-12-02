@@ -1,5 +1,36 @@
 @import 'config';
 
+// ************************************* Global Sections ************************************* //
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+}
+
+main {
+  background-color: #dd082d;
+  max-width: 50vw;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+article {
+  width: 70%;
+  position: relative;
+  margin: 0 auto;
+  background-color: white;
+}
+
+section {
+}
+
+// *************************************** Global Classes *************************************** //
+
 .capitalize {
   text-transform: capitalize;
 }
@@ -8,20 +39,162 @@
   display: flex;
 }
 
-.evolution-block:hover {
-  cursor: pointer;
-  size: 115%;
-  background-color: #ddd;
+.vertically-center {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-.types ul {
-  list-style-type: none;
+// ***************************************** Navigation ***************************************** //
+
+nav {
+  width: 50%;
+  margin: 0 auto;
+  padding: 1rem;
+
+  // Search Box & Form
+  .search-form {
+    display: flex;
+    form {
+    }
+    label {
+    }
+    input {
+      width: 300px;
+      text-align: center;
+    }
+    button {
+    }
+    p.incorrect-search-text {
+      color: red;
+    }
+  }
+
+  // Nav Buttons to Prev, Next, or Random Pokemon
+  .change-pokemon {
+    button {
+    }
+  }
+}
+
+// *****************************************  Sections  ******************************************** //
+
+// Title Card -------- Pokeball Sprite - Pokemon Name - Pokemon Number
+.titlecard {
   display: flex;
 
-  li {
-    color: white;
-    font-family: Roboto, sans-serif;
-    padding: 1rem;
+  .pokeball-sprite {
+    width: 70px;
+    height: 70px;
+  }
+  .vertically-center {
+    h1 {
+      font-size: 2.4rem;
+    }
+  }
+}
+
+// Pokemon Images / Sprites  ------ (Regular & Shiny)
+.sprites {
+  display: flex;
+  justify-content: center;
+  .flexbox {
+    img {
+      width: 250px;
+      height: 250px;
+    }
+  }
+}
+
+// Toggle Sprites Button ----- Toggles between regular and shiny sprite
+.toggle-sprite {
+  button {
+  }
+}
+
+// Types ----- List of Pokemon's Types (Max 2)
+.types {
+  ul {
+    list-style-type: none;
+    display: flex;
+
+    li {
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      color: white;
+      text-align: center;
+      font-family: Roboto, sans-serif;
+      min-width: 3rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+}
+
+// Genus ------ Genera data description
+.genus {
+  h3 {
+  }
+}
+
+// Height and Weight ---- Measurements + Toggle Button between metric/imperial
+.measurements {
+  .flexbox {
+    flex-direction: column;
+    h3 {
+    }
+  }
+
+  button {
+  }
+}
+
+// Description ------ Pokemon description paragraph
+.description {
+  p {
+  }
+}
+
+// Pre-Evolution -------- Pokemon that evolves into current Pokemon, only visible if it exists
+.pre-evolution {
+  h4 {
+  }
+}
+
+// Evolutionary Tree ----- Button to toggle full evolutionary tree (hidden by default)
+.evolutionary-tree {
+  button {
+  }
+}
+
+// ******************************************* Div Subsections ***************************************** //
+
+// Evolutions Container ----- Contains all of a Pokemon's evolutions
+.evolutions {
+  padding: 1rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  // Single Evolution + Arrow Container
+  .evolution-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  // Single Evolution Container ----- Clickable element linked to Pokedex entry
+  .evolution-block {
+    &:hover {
+      cursor: pointer;
+      size: 115%;
+      background-color: #ddd;
+    }
+    img {
+    }
+    p {
+    }
+  }
+
+  // Arrow between Evolutions
+  .arrow {
   }
 }
 

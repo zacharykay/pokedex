@@ -6,15 +6,13 @@ export interface Evolution {
     name: string,
     url: string,
     img: string
-    id: number
+    id: number,
+    multiple: boolean
 }
 
 export interface EvolutionChain {
-  firstPreEv: Evolution;
-  preEv: Evolution;
-  currentPokemon: Evolution;
-  nextEv: Evolution;
-  lastNextEv: Evolution;
+
+    evolutions: Evolution[]
 }
 
 export interface PokemonData {
@@ -23,12 +21,13 @@ export interface PokemonData {
     height: number,
     weight: number,
     description: string,
+    genus: string,
     preEvolution: {
         name: string,
         url: string
     } | null,
     evolutionChain: {
-        firstPreEv: Evolution , preEv: Evolution , currentPokemon: Evolution, nextEv: Evolution , lastNextEv: Evolution 
+        evolutions: any
     } ,
     sprites: {
         front_default: string,

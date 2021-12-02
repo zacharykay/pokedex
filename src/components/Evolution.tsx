@@ -13,11 +13,7 @@ const Evolution: FC<Evolution> = ({ name, img, url, id, arrow }) => {
   const { setSearchTerm } = useDataContext();
 
   return (
-    <div
-      className="evolution-container"
-      style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-    >
-      {arrow === "before" && <div className="arrow"> {">"} </div>}
+    <div className="evolution-container">
       <div
         className="capitalize evolution-block"
         onClick={(e) => {

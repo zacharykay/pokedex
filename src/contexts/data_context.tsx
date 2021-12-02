@@ -1,14 +1,5 @@
-import React, {
-  FC,
-  useState,
-  useEffect,
-  useContext,
-  useReducer,
-  createContext,
-} from "react";
-// import reducer from "../reducers/data_reducer";
+import { FC, useState, useContext, createContext } from "react";
 import { State } from "../util/interfaces";
-import { ActionKind } from "../util/actions";
 
 const initialState: State = {
   pokeSearch: "",
@@ -17,8 +8,12 @@ const initialState: State = {
 export const DataContext = createContext<any>({} as any);
 
 export const DataProvider: FC = ({ children }) => {
+  const randomPokemonNumber = () => {
+    return (Math.random() * 897 + 1).toFixed();
+  };
+
   const [ pokemonSearch, setPokemonSearch ] = useState("");
-  const [ searchTerm, setSearchTerm ] = useState("charizard");
+  const [ searchTerm, setSearchTerm ] = useState(randomPokemonNumber());
   const [ showEvolutions, setShowEvolutions ] = useState(false);
 
   return (
@@ -31,6 +26,7 @@ export const DataProvider: FC = ({ children }) => {
         setSearchTerm,
         showEvolutions,
         setShowEvolutions,
+        randomPokemonNumber,
       }}
     >
       {children}
