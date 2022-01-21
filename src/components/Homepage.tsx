@@ -128,37 +128,6 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
           </div>
         </div>
 
-        {/* Toggle to show regular or shiny version of Pokemon */}
-        {/* <section className="toggle-sprite"> */}
-        {/* <button
-            onClick={(e) => {
-              e.preventDefault();
-              setShowShiny(!showShiny);
-            }}
-          >
-            {showShiny ? "Show Normal Form" : "Show Shiny Form"}
-          </button> */}
-        {/* </section> */}
-
-        {/* Height & Weight */}
-        {/* <section className="measurements"> */}
-        {/* Display Converted Height and Weight units */}
-        {/* <div className="flexbox">
-            <h3>Height: {metricUnits ? metric.height : imperial.height}</h3>
-            <h3>Weight: {metricUnits ? metric.weight : imperial.weight}</h3>
-          </div> */}
-
-        {/* Toggle between Imperial and Metric units for height and weight */}
-        {/* <button
-            onClick={(e) => {
-              e.preventDefault();
-              setMetricUnits(!metricUnits);
-            }}
-          >
-            Change Units
-          </button> */}
-        {/* </section> */}
-
         {/* Pokedex description from first game Pokemon appears in */}
         <section
           className="description"
@@ -194,7 +163,7 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
                 console.log("evolutionChain", evolutionChain);
               }}
             >
-              Show Evolutions
+              {showEvolutions ? 'Hide Evolutions' : 'Show Evolutions'}
             </button>
 
             {showEvolutions && <EvolutionaryTree {...evolutionChain} />}
@@ -202,27 +171,29 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
         )}
       </article>
 
-      {/* Toggle Shiny Button */}
-      <button
-        className="toggle-shiny-btn"
-        onClick={(e) => {
-          e.preventDefault();
-          setShowShiny(!showShiny);
-        }}
-      >
-        {showShiny ? "Show Normal Form" : "Show Shiny Form"}
-      </button>
+      <div className="btn-flexbox">
+        {/* Toggle Shiny Button */}
+        <button
+          className="toggle-shiny-btn"
+          onClick={(e) => {
+            e.preventDefault();
+            setShowShiny(!showShiny);
+          }}
+        >
+          {showShiny ? "Show Normal Form" : "Show Shiny Form"}
+        </button>
 
-      {/* Toggle between Imperial and Metric units for height and weight */}
-      <button
-        className="convert-units-btn"
-        onClick={(e) => {
-          e.preventDefault();
-          setMetricUnits(!metricUnits);
-        }}
-      >
-        Change Units
-      </button>
+        {/* Toggle between Imperial and Metric units for height and weight */}
+        <button
+          className="convert-units-btn"
+          onClick={(e) => {
+            e.preventDefault();
+            setMetricUnits(!metricUnits);
+          }}
+        >
+          {metricUnits ? 'Metric Units' : 'Imperial Units'}
+        </button>
+      </div>
     </main>
   );
 };
