@@ -13,7 +13,7 @@ body {
 }
 
 main {
-  background-color: #dd082d;
+  background-color: $pokedex-color;
   max-width: 50vw;
   height: 100vh;
   margin: 0 auto;
@@ -73,10 +73,57 @@ nav {
       color: red;
     }
   }
+}
 
-  // Nav Buttons to Prev, Next, or Random Pokemon
+// Flexbox containing Arrow Buttons & Circles (A + B)
+.control-buttons-flexbox {
+  display: flex;
+  justify-content: space-between;
+}
+
+// Nav Buttons to Prev, Next, or Random Pokemon
+.arrow-buttons-flexbox {
+  margin-top: 4rem;
+  margin-left: 15%;
   .change-pokemon {
-    button {
+    display: inline-block;
+    margin: 1rem;
+
+    // button {
+    //   display: inline-block;
+    // }
+
+    .arrow-btn {
+      background-color: $pokedex-color;
+      border: none;
+      svg {
+        width: 50px;
+        height: 50px;
+        background-color: $pokedex-color;
+        path {
+          fill: black;
+        }
+      }
+    }
+  }
+}
+
+// Circle Buttons (A & B)
+.round-buttons-flexbox {
+  margin-top: 3rem;
+  margin-right: 15%;
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  .button-circle {
+    width: 60px;
+    height: 60px;
+    background-color: black;
+    border-radius: 50%;
+    &:nth-child(1) {
+      align-self: flex-end;
+    }
+    &:nth-child(2) {
     }
   }
 }

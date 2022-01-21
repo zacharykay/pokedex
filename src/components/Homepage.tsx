@@ -5,7 +5,10 @@ import EvolutionaryTree from "./EvolutionaryTree";
 import { useDataContext } from "../contexts/data_context";
 import SearchForm from "./SearchForm";
 import { ChangePokemon } from "./ChangePokemon";
+
 import pokeball from "../assets/8-bit-pokeball.png";
+// import {ReactComponent as LeftArrow} from "../icons/svg/arrow-left-svgrepo-com.svg"
+// import {ReactComponent as RightArrow} from "../icons/svg/arrow-right-svgrepo-com.svg"
 
 import { pokemonTypes as pokeTypes } from "../data/pokemonTypes";
 
@@ -163,13 +166,26 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
                 console.log("evolutionChain", evolutionChain);
               }}
             >
-              {showEvolutions ? 'Hide Evolutions' : 'Show Evolutions'}
+              {showEvolutions ? "Hide Evolutions" : "Show Evolutions"}
             </button>
 
             {showEvolutions && <EvolutionaryTree {...evolutionChain} />}
           </section>
         )}
       </article>
+
+      <div className="control-buttons-flexbox">
+        <div className="arrow-buttons-flexbox">
+          <ChangePokemon id={id} buttonType="previous" />
+          <ChangePokemon id={id} buttonType="next" />
+          {/* <button className="left-btn arrow-btn"><LeftArrow/></button>
+        <button className="right-btn arrow-btn"><RightArrow/></button> */}
+        </div>
+        <div className="round-buttons-flexbox">
+          <div className="button-circle" />
+          <div className="button-circle" />
+        </div>
+      </div>
 
       <div className="btn-flexbox">
         {/* Toggle Shiny Button */}
@@ -191,7 +207,7 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
             setMetricUnits(!metricUnits);
           }}
         >
-          {metricUnits ? 'Metric Units' : 'Imperial Units'}
+          {metricUnits ? "Metric Units" : "Imperial Units"}
         </button>
       </div>
     </main>
