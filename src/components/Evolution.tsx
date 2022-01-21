@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useDataContext } from "../contexts/data_context";
 
 interface Evolution {
@@ -9,13 +9,20 @@ interface Evolution {
   arrow: string | null;
 }
 
-const Evolution: FC<Evolution> = ({ name, img, url, id, arrow }) => {
+const Evolution: FC<Evolution> = (evolution, themeColor1) => {
   const { setSearchTerm } = useDataContext();
+
+  const [ hovering, setHovering ] = useState(false);
+
+  const { name, img, url, id, arrow } = evolution;
 
   return (
     <div className="evolution-container">
       <div
         className="capitalize evolution-block"
+        style={hovering ? { backgroundColor: themeColor1 } : { backgroundColor: "" }}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
         onClick={(e) => {
           e.preventDefault();
           setSearchTerm(id.toString());

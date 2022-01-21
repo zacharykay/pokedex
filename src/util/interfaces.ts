@@ -7,11 +7,13 @@ export interface Evolution {
     url: string,
     img: string
     id: number,
-    multiple: boolean
+    multiple: boolean,
+    themeColor1?: string
 }
 
 export interface EvolutionChain {
-
+    themeColor1?: string,
+    themeColor2?: string | null,
     evolutions: Evolution[]
 }
 

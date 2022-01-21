@@ -71,7 +71,7 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
             <img className="pokeball-sprite" src={pokeball} alt="8-bit pokeball" />
             <div className="vertically-center">
               <h1 className="capitalize">
-                No. {addZerosToId(id)} {name}
+                No.{addZerosToId(id)} {name}
               </h1>
             </div>
           </div>
@@ -169,7 +169,13 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
               {showEvolutions ? "Hide Evolutions" : "Show Evolutions"}
             </button>
 
-            {showEvolutions && <EvolutionaryTree {...evolutionChain} />}
+            {showEvolutions && (
+              <EvolutionaryTree
+                themeColor1={themeColor1}
+                themeColor2={themeColor2}
+                {...evolutionChain}
+              />
+            )}
           </section>
         )}
       </article>
@@ -182,8 +188,12 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
         <button className="right-btn arrow-btn"><RightArrow/></button> */}
         </div>
         <div className="round-buttons-flexbox">
-          <div className="button-circle" />
-          <div className="button-circle" />
+          <div className="button-circle">
+            <p>A</p>
+          </div>
+          <div className="button-circle">
+            <p>B</p>
+          </div>
         </div>
       </div>
 

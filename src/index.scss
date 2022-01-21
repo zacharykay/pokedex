@@ -48,7 +48,7 @@ section {
 // ***************************************** Navigation ***************************************** //
 
 nav {
-  width: 50%;
+  width: 66%;
   margin: 0 auto;
   padding: 1rem;
 
@@ -60,14 +60,28 @@ nav {
     label {
     }
     input {
-      height: 30px;
-      width: 300px;
+      height: 40px;
+      width: 380px;
+      border-radius: 20px;
       text-align: center;
       font-size: 1rem;
       outline: none;
+      color: #33ff33;
+      font-family: $analog-font;
+      letter-spacing: 0.1rem;
+      background-color: #282828;
+    }
+    .search-btn {
+      margin-left: 1.2rem;
+      border-radius: 10px;
+      background-color: black;
+      color: white;
+      font-family: $analog-font;
+      letter-spacing: 0.1rem;
     }
     button {
-      height: 30px;
+      width: 80px;
+      height: 40px;
     }
     p.incorrect-search-text {
       color: red;
@@ -120,10 +134,17 @@ nav {
     height: 60px;
     background-color: black;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &:nth-child(1) {
       align-self: flex-end;
     }
     &:nth-child(2) {
+    }
+    p {
+      color: white;
+      font-family: $pixelated-font;
     }
   }
 }
@@ -133,10 +154,12 @@ nav {
   position: absolute;
   width: 150px;
   height: 36px;
-  font-size: 1rem;
+  font-size: 0.7rem;
   color: white;
   background-color: black;
   border-radius: 12px;
+  font-family: $analog-font;
+  letter-spacing: 0.1rem;
 }
 
 .convert-units-btn {
@@ -173,6 +196,7 @@ nav {
   border-radius: 5px;
   box-shadow: 0px 0px 2px 1px black;
   box-sizing: content-box;
+  font-family: $pixelated-font;
   .flexbox {
     .pokeball-sprite {
       width: 70px;
@@ -181,14 +205,14 @@ nav {
     }
     .vertically-center {
       h1 {
-        font-size: 2rem;
+        font-size: 1.4rem;
       }
     }
   }
   .genus {
     text-align: right;
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.1rem;
     }
   }
 
@@ -300,7 +324,7 @@ nav {
     &:hover {
       cursor: pointer;
       size: 115%;
-      background-color: #ddd;
+      // background-color: #ddd;
     }
     img {
     }

@@ -50,7 +50,9 @@ const SearchForm = () => {
             setPokemonSearch(e.target.value);
           }}
         />
-        <button onClick={(e) => searchForPokemon(e)}>Search</button>
+        <button className="search-btn" onClick={(e) => searchForPokemon(e)}>
+          Search
+        </button>
         {searchError && (
           <p className="incorrect-search-text">
             Pokemon does not exist... Please check spelling or try a number between 1 -
