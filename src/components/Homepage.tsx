@@ -149,7 +149,7 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
         {preEvolution && (
           <section className="pre-evolution">
             <h4>
-              Evolves from: <span className="capitalize">{preEvolution.name}</span>
+              Evolves from <span className="capitalize">{preEvolution.name}</span>
             </h4>
           </section>
         )}
@@ -160,13 +160,15 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
           <section className="evolutionary-tree">
             {/* Toggle to Show / Hide Pokemon's evolutionary line in order with sprites (images) */}
             <button
+              style={{ backgroundColor: themeColor1 }}
+              className="evolutions-btn"
               onClick={(e) => {
                 e.preventDefault();
                 setShowEvolutions(!showEvolutions);
-                console.log("evolutionChain", evolutionChain);
+                // console.log("evolutionChain", evolutionChain);
               }}
             >
-              {showEvolutions ? "Hide Evolutions" : "Show Evolutions"}
+              {showEvolutions ? "Hide Evolutions" : "See Evolutions"}
             </button>
 
             {showEvolutions && (
@@ -182,18 +184,16 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
 
       <div className="control-buttons-flexbox">
         <div className="arrow-buttons-flexbox">
-          <ChangePokemon id={id} buttonType="previous" />
-          <ChangePokemon id={id} buttonType="next" />
+          <ChangePokemon id={id} buttonType="next10" arrowDirection="up-btn" />
+          <ChangePokemon id={id} buttonType="previous" arrowDirection="left-btn" />
+          <ChangePokemon id={id} buttonType="next" arrowDirection="right-btn" />
+          <ChangePokemon id={id} buttonType="previous10" arrowDirection="down-btn" />
           {/* <button className="left-btn arrow-btn"><LeftArrow/></button>
         <button className="right-btn arrow-btn"><RightArrow/></button> */}
         </div>
         <div className="round-buttons-flexbox">
-          <div className="button-circle">
-            <p>A</p>
-          </div>
-          <div className="button-circle">
-            <p>B</p>
-          </div>
+          <ChangePokemon id={id} buttonType="random" />
+          <ChangePokemon id={id} buttonType="back" />
         </div>
       </div>
 

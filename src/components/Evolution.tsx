@@ -4,25 +4,24 @@ import { useDataContext } from "../contexts/data_context";
 interface Evolution {
   name: string;
   img: string;
-  url: string;
   id: number;
-  arrow: string | null;
+  // arrow: string | null;
 }
 
 const Evolution: FC<Evolution> = (evolution, themeColor1) => {
   const { setSearchTerm } = useDataContext();
 
-  const [ hovering, setHovering ] = useState(false);
+  // const [ hovering, setHovering ] = useState(false);
 
-  const { name, img, url, id, arrow } = evolution;
+  const { name, img, id } = evolution;
 
   return (
     <div className="evolution-container">
       <div
         className="capitalize evolution-block"
-        style={hovering ? { backgroundColor: themeColor1 } : { backgroundColor: "" }}
-        onMouseEnter={() => setHovering(true)}
-        onMouseLeave={() => setHovering(false)}
+        // style={hovering ? { backgroundColor: themeColor1 } : { backgroundColor: "" }}
+        // onMouseOver={() => setHovering(true)}
+        // onMouseOut={() => setHovering(false)}
         onClick={(e) => {
           e.preventDefault();
           setSearchTerm(id.toString());
@@ -33,7 +32,7 @@ const Evolution: FC<Evolution> = (evolution, themeColor1) => {
           {name} #{id}
         </p>
       </div>
-      {arrow === "after" && <div className="arrow"> {">"} </div>}
+      {/* {arrow === "after" && <div className="arrow"> {">"} </div>} */}
     </div>
   );
 };

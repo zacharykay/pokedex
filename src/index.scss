@@ -9,15 +9,26 @@
 }
 
 body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: black;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 main {
   background-color: $pokedex-color;
-  max-width: 50vw;
+  max-width: 800px;
   height: 100vh;
   margin: 0 auto;
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 article {
@@ -78,13 +89,15 @@ nav {
       color: white;
       font-family: $analog-font;
       letter-spacing: 0.1rem;
+      cursor: pointer;
     }
     button {
       width: 80px;
       height: 40px;
     }
     p.incorrect-search-text {
-      color: red;
+      font-family: $analog-font;
+      color: #111;
     }
   }
 }
@@ -97,19 +110,29 @@ nav {
 
 // Nav Buttons to Prev, Next, or Random Pokemon
 .arrow-buttons-flexbox {
-  margin-top: 4rem;
+  margin-top: 2.5rem;
   margin-left: 15%;
+  display: grid;
+  grid-template-columns: 50px 50px 50px;
+  grid-template-rows: 50px 50px 50px;
+  grid-template-areas: ". top ." "left . right" ". bottom .";
+  .up-btn {
+    grid-area: top;
+  }
+  .left-btn {
+    grid-area: left;
+  }
+  .right-btn {
+    grid-area: right;
+  }
+  .down-btn {
+    grid-area: bottom;
+  }
   .change-pokemon {
-    display: inline-block;
-    margin: 1rem;
-
-    // button {
-    //   display: inline-block;
-    // }
-
     .arrow-btn {
       background-color: $pokedex-color;
       border: none;
+      cursor: pointer;
       svg {
         width: 50px;
         height: 50px;
@@ -129,6 +152,13 @@ nav {
   display: flex;
   flex-direction: column;
   width: 120px;
+  .change-pokemon {
+    &:nth-child(1) {
+      align-self: flex-end;
+    }
+    &:nth-child(2) {
+    }
+  }
   .button-circle {
     width: 60px;
     height: 60px;
@@ -137,11 +167,9 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    &:nth-child(1) {
-      align-self: flex-end;
-    }
-    &:nth-child(2) {
-    }
+    cursor: pointer;
+    background: radial-gradient(circle at 20px 20px, #333, #000);
+
     p {
       color: white;
       font-family: $pixelated-font;
@@ -160,6 +188,7 @@ nav {
   border-radius: 12px;
   font-family: $analog-font;
   letter-spacing: 0.1rem;
+  cursor: pointer;
 }
 
 .convert-units-btn {
@@ -182,6 +211,7 @@ nav {
   height: 100px;
   border-radius: 50px;
   border: 5px solid #d6d6d6;
+  background: radial-gradient(circle at 30px 30px, #27abfc, #000);
 }
 
 // *****************************************  Sections  ******************************************** //
@@ -212,6 +242,7 @@ nav {
   .genus {
     text-align: right;
     h2 {
+      padding: 0.1rem;
       font-size: 1.1rem;
     }
   }
@@ -228,6 +259,8 @@ nav {
   display: flex;
   justify-content: center;
   .flexbox {
+    width: 230px;
+    height: 230px;
     img {
       width: 250px;
       height: 250px;
@@ -285,8 +318,21 @@ nav {
   }
 }
 
+// Show / Hide Evolutions
+.evolutions-btn {
+  margin: .3rem auto .3rem .5rem;
+  padding: .3rem;
+  border-radius: 5px;
+  display: block;
+  font-family: $pixelated-font;
+  color: black;
+  font-size: 1rem;
+}
+
 // Pre-Evolution -------- Pokemon that evolves into current Pokemon, only visible if it exists
 .pre-evolution {
+  margin-left: .5rem;
+  font-family: $analog-font;
   h4 {
   }
 }
@@ -321,9 +367,10 @@ nav {
   }
   // Single Evolution Container ----- Clickable element linked to Pokedex entry
   .evolution-block {
+    padding-right: 1rem;
     &:hover {
       cursor: pointer;
-      size: 115%;
+
       // background-color: #ddd;
     }
     img {
@@ -335,16 +382,4 @@ nav {
   // Arrow between Evolutions
   .arrow {
   }
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
