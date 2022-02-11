@@ -14,7 +14,9 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+  background-image: url('/icons/png/pokemon-gotta-catch-em-all.png');
+  background-repeat: repeat;
+  background-size: 400px;
 }
 
 code {
@@ -23,12 +25,18 @@ code {
 
 main {
   background-color: $pokedex-color;
+  width: 94vw;
   max-width: 800px;
-  height: 100vh;
-  margin: 0 auto;
+  min-height: 820px;
+  max-height: 1024px;
+  height: 97vh;
+  margin: 1.5vh auto;
   position: relative;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 5pt 3pt #111;
+  z-index: 10;
 }
 
 article {
@@ -36,6 +44,7 @@ article {
   position: relative;
   margin: 0 auto;
   background-color: white;
+  margin-top: 1rem;
 }
 
 section {
@@ -65,14 +74,15 @@ nav {
 
   // Search Box & Form
   .search-form {
-    display: flex;
+    // display: flex;
+    margin-top: .6rem;
     form {
     }
     label {
     }
     input {
       height: 40px;
-      width: 380px;
+      width: 360px;
       border-radius: 20px;
       text-align: center;
       font-size: 1rem;
@@ -83,19 +93,24 @@ nav {
       background-color: #282828;
     }
     .search-btn {
-      margin-left: 1.2rem;
+      margin-left: 1rem;
       border-radius: 10px;
       background-color: black;
       color: white;
       font-family: $analog-font;
       letter-spacing: 0.1rem;
       cursor: pointer;
+      padding: .1rem;
     }
     button {
-      width: 80px;
+      width: 90px;
       height: 40px;
     }
+    .small-search-btn {
+      display: none;
+    }
     p.incorrect-search-text {
+      display: block;
       font-family: $analog-font;
       color: #111;
     }
@@ -110,12 +125,12 @@ nav {
 
 // Nav Buttons to Prev, Next, or Random Pokemon
 .arrow-buttons-flexbox {
-  margin-top: 2.5rem;
-  margin-left: 15%;
+  margin-top: 1.5rem;
+  margin-left: 20%;
   display: grid;
   grid-template-columns: 50px 50px 50px;
   grid-template-rows: 50px 50px 50px;
-  grid-template-areas: ". top ." "left . right" ". bottom .";
+  grid-template-areas: ". top ." "left center right" ". bottom .";
   .up-btn {
     grid-area: top;
   }
@@ -127,6 +142,15 @@ nav {
   }
   .down-btn {
     grid-area: bottom;
+  }
+  .center-circle {
+    grid-area: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    border: 2px solid black;
+    box-shadow: inset 0 0 10px #111;
+    margin: auto;
   }
   .change-pokemon {
     .arrow-btn {
@@ -147,8 +171,8 @@ nav {
 
 // Circle Buttons (A & B)
 .round-buttons-flexbox {
-  margin-top: 3rem;
-  margin-right: 15%;
+  margin-top: 2.4rem;
+  margin-right: 20%;
   display: flex;
   flex-direction: column;
   width: 120px;
@@ -177,9 +201,23 @@ nav {
   }
 }
 
+.btn-flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 3rem;
+  position: absolute;
+  bottom: 20px;
+  width: 94vw;
+  max-width: 800px;
+}
 .convert-units-btn,
 .toggle-shiny-btn {
-  position: absolute;
+  position: relative;
+  margin-top: auto;
+  align-self: flex-end;
+  align-items: flex-end;
+  display: block;
   width: 150px;
   height: 36px;
   font-size: 0.7rem;
@@ -189,16 +227,6 @@ nav {
   font-family: $analog-font;
   letter-spacing: 0.1rem;
   cursor: pointer;
-}
-
-.convert-units-btn {
-  bottom: 30px;
-  left: 30%;
-}
-
-.toggle-shiny-btn {
-  bottom: 30px;
-  right: 30%;
 }
 
 // Pokedex Embellishments
@@ -221,13 +249,16 @@ nav {
   margin-left: auto;
   margin-right: .5rem;
   margin-top: .5rem;
-  width: 80%;
+  width: 85%;
   border: 3px darkgray solid;
   border-radius: 5px;
-  box-shadow: 0px 0px 2px 1px black;
+  box-shadow: 0 0 3pt 1pt black;
   box-sizing: content-box;
   font-family: $pixelated-font;
   .flexbox {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    margin: -1px -1px 2px -1px;
     .pokeball-sprite {
       width: 70px;
       height: 70px;
@@ -236,6 +267,7 @@ nav {
     .vertically-center {
       h1 {
         font-size: 1.4rem;
+        line-height: 110%;
       }
     }
   }
@@ -245,10 +277,6 @@ nav {
       padding: 0.1rem;
       font-size: 1.1rem;
     }
-  }
-
-  .btn-flexbox {
-    display: flex;
   }
 
   // Genus ------ Genera data description
@@ -269,10 +297,10 @@ nav {
 }
 
 // Toggle Sprites Button ----- Toggles between regular and shiny sprite
-.toggle-sprite {
-  button {
-  }
-}
+// .toggle-sprite {
+//   button {
+//   }
+// }
 
 // Types ----- List of Pokemon's Types (Max 2)
 .types {
@@ -301,12 +329,12 @@ nav {
 .measurements {
   .flexbox {
     flex-direction: column;
-    h3 {
-    }
+    // h3 {
+    // }
   }
 
-  button {
-  }
+  // button {
+  // }
 }
 
 // Description ------ Pokemon description paragraph
@@ -314,26 +342,37 @@ nav {
   border-radius: 5px;
   margin: 0.5rem;
   padding: 0.5rem;
+  box-shadow: 0 0 3pt 2pt black;
   p {
   }
 }
 
 // Show / Hide Evolutions
 .evolutions-btn {
-  margin: .3rem auto .3rem .5rem;
+  margin: .8rem auto .4rem .5rem;
   padding: .3rem;
   border-radius: 5px;
   display: block;
   font-family: $pixelated-font;
   color: black;
   font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 2pt 1pt #333;
 }
 
 // Pre-Evolution -------- Pokemon that evolves into current Pokemon, only visible if it exists
 .pre-evolution {
-  margin-left: .5rem;
   font-family: $analog-font;
+  hr {
+    margin-bottom: .6rem;
+  }
   h4 {
+    margin-left: -1rem;
+    text-align: right;
+  }
+  .pre-evolution-name {
+    font-family: $pixelated-font;
+    padding-top: .4rem;
   }
 }
 
@@ -359,20 +398,36 @@ nav {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+  &::-webkit-scrollbar {
+    background-color: #fff;
+  }
+  // &::-webkit-scrollbar-track {
+  //   box-shadow: inset 0 0 5px grey;
+  //   border-radius: 10px;
+  // }
+  &::-webkit-scrollbar-thumb {
+    background-color: $pokedex-color;
+    border-radius: 10px;
+    border: 2px solid black;
+    outline: 4px solid white;
+  }
   // Single Evolution + Arrow Container
   .evolution-container {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  // Single Evolution Container ----- Clickable element linked to Pokedex entry
-  .evolution-block {
-    padding-right: 1rem;
     &:hover {
       cursor: pointer;
 
-      // background-color: #ddd;
+      background-color: #eff;
     }
+  }
+  // Single Evolution Container ----- Clickable element linked to Pokedex entry
+  .evolution-block {
+    padding-left: .5rem;
+    padding-right: .5rem;
+    padding-bottom: .5rem;
+    text-align: center;
     img {
     }
     p {
@@ -381,5 +436,463 @@ nav {
 
   // Arrow between Evolutions
   .arrow {
+  }
+}
+
+@media screen and (max-width: 800px) {
+  main {
+    max-height: 800px;
+  }
+  article {
+    margin-top: 1rem;
+  }
+  .blue-ball {
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    background: radial-gradient(circle at 21px 21px, #27abfc, #000);
+  }
+  .titlecard {
+    .flexbox {
+      .pokeball-sprite {
+        width: 70px;
+        height: 70px;
+        margin-top: -15px;
+      }
+      .vertically-center {
+        h1 {
+          font-size: 1.2rem;
+          line-height: 110%;
+        }
+      }
+    }
+    .genus {
+      h2 {
+        padding: 0.1rem;
+        font-size: .9rem;
+      }
+    }
+
+    // Genus ------ Genera data description
+  }
+
+  .sprites {
+    .flexbox {
+      width: 190px;
+      height: 190px;
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+
+  // Super Section for Types & Measurements Flexbox
+  .types-measurements {
+    margin-bottom: .5rem;
+    row-gap: .5rem;
+  }
+
+  // Types ----- List of Pokemon's Types (Max 2)
+  .types {
+    ul {
+      li {
+        margin: 0.5rem;
+        font-size: .9rem;
+        min-width: 3rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
+
+  .measurements {
+    .flexbox {
+      h3 {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  // Pre-Evolution -------- Pokemon that evolves into current Pokemon, only visible if it exists
+  .pre-evolution {
+    h4 {
+      margin-left: -1rem;
+      font-size: .8rem;
+    }
+    .pre-evolution-name {
+      padding-top: .4rem;
+    }
+  }
+
+  // Description ------ Pokemon description paragraph
+  .description {
+    font-size: .85rem;
+  }
+  .titlecard {
+    .flexbox {
+      .pokeball-sprite {
+        margin-top: -6px;
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+  // Show / Hide Evolutions
+  .evolutions-btn {
+    font-size: .8rem;
+  }
+  // Navigation
+  nav {
+    // Search Box & Form
+    .search-form {
+      form {
+        display: flex;
+        margin-top: .5rem;
+      }
+      input {
+        margin-left: -.5rem;
+      }
+    }
+  }
+  .arrow-buttons-flexbox {
+    margin-top: 2rem;
+    margin-left: 18%;
+  }
+
+  .round-buttons-flexbox {
+    margin-top: 3rem;
+    margin-right: 18%;
+  }
+
+  .btn-flexbox {
+    column-gap: 2rem;
+    bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  nav {
+    .search-form {
+      form {
+        display: flex;
+        margin-top: .6rem;
+      }
+      input {
+        margin-left: .2rem;
+        height: 50px;
+        width: 270px;
+        font-size: .8rem;
+        border-radius: 35px;
+      }
+      .search-btn {
+        border-radius: 10px;
+        font-size: .7rem;
+      }
+      button {
+        width: 75px;
+        height: 50px;
+      }
+      p.incorrect-search-text {
+        font-size: .9rem;
+      }
+    }
+  }
+
+  .titlecard {
+    .flexbox {
+      .vertically-center {
+        h1 {
+          font-size: .9rem;
+          line-height: 110%;
+        }
+      }
+    }
+
+    .genus {
+      h2 {
+        font-size: .65rem;
+      }
+    }
+  }
+
+  .sprites {
+    .flexbox {
+      width: 140px;
+      height: 140px;
+      img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  }
+
+  .types {
+    ul {
+      li {
+        margin: 0.4rem;
+        font-size: .8rem;
+        min-width: 3rem;
+        padding: 0.4rem .6rem;
+      }
+    }
+  }
+
+  .pre-evolution {
+    h4 {
+      font-size: .7rem;
+    }
+    .pre-evolution-name {
+      padding-top: .4rem;
+    }
+  }
+  // Show / Hide Evolutions
+  .evolutions-btn {
+    font-size: .7rem;
+  }
+  .arrow-buttons-flexbox {
+    margin-left: 15%;
+  }
+
+  .round-buttons-flexbox {
+    margin-right: 15%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  main {
+    min-height: 775px;
+    max-height: 800px;
+  }
+  article {
+    width: 80%;
+  }
+
+  nav {
+    .search-form {
+      form {
+        display: flex;
+        margin-top: .6rem;
+      }
+      input {
+        margin-left: .8rem;
+        height: 50px;
+        width: 180px;
+        font-size: .6rem;
+        border-radius: 30px;
+      }
+      .search-btn {
+        border-radius: 10px;
+        font-size: .7rem;
+        margin-left: 1rem;
+      }
+      button {
+        width: 70px;
+        height: 50px;
+      }
+      p.incorrect-search-text {
+        font-size: .8rem;
+      }
+    }
+  }
+
+  .titlecard {
+    .flexbox {
+      .vertically-center {
+        h1 {
+          font-size: .7rem;
+          line-height: 110%;
+        }
+      }
+    }
+    .genus {
+      h2 {
+        font-size: .55rem;
+      }
+    }
+  }
+
+  .sprites {
+    .flexbox {
+      width: 125px;
+      height: 125px;
+      img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  }
+
+  .types {
+    ul {
+      li {
+        margin: 0.3rem;
+        font-size: .6rem;
+        min-width: 2rem;
+        padding: .2rem .4rem;
+      }
+    }
+  }
+
+  .measurements {
+    .flexbox {
+      h3 {
+        font-size: .8rem;
+      }
+    }
+  }
+  .pre-evolution {
+    h4 {
+      margin-left: -1rem;
+      font-size: .6rem;
+    }
+    .pre-evolution-name {
+      padding-top: .4rem;
+    }
+  }
+  .description {
+    font-size: .7rem;
+  }
+  .arrow-buttons-flexbox {
+    margin-left: 10%;
+  }
+
+  .round-buttons-flexbox {
+    margin-right: 10%;
+  }
+  .evolutions-btn {
+    font-size: .6rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  main {
+    min-height: 720px;
+    max-height: 720px;
+  }
+  article {
+    width: 88%;
+  }
+  nav {
+    margin-bottom: -1rem;
+    .search-form {
+      margin-top: -.5rem;
+      display: flex;
+
+      form {
+        display: flex;
+        justify-content: space-around;
+      }
+      input {
+        margin-left: 0;
+        height: 40px;
+        width: 180px;
+        font-size: .6rem;
+        border-radius: 30px;
+        align-self: flex-bottom;
+      }
+      .search-btn {
+        display: none;
+      }
+      .small-search-btn {
+        margin-top: -1rem;
+        border-radius: 22px;
+        font-size: .7rem;
+        margin-left: 2rem;
+        margin-right: .2rem;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+        align-self: flex-end;
+        display: block;
+        background-color: black;
+        color: white;
+        font-family: $analog-font;
+        cursor: pointer;
+      }
+      p.incorrect-search-text {
+        font-size: .75rem;
+      }
+    }
+  }
+  .blue-ball {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background: radial-gradient(circle at 15px 15px, #27abfc, #000);
+    border: 4px solid #d6d6d6;
+  }
+
+  .control-buttons-flexbox {
+    margin-top: .6rem;
+  }
+
+  .btn-flexbox {
+    column-gap: 1.2rem;
+    bottom: 25px;
+  }
+  .convert-units-btn,
+  .toggle-shiny-btn {
+    position: relative;
+    margin-top: auto;
+    align-self: flex-end;
+    align-items: flex-end;
+    display: block;
+    width: 120px;
+    height: 36px;
+    font-size: 0.55rem;
+    color: white;
+    background-color: black;
+    border-radius: 12px;
+    font-family: $analog-font;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  main {
+    min-height: 650px;
+    max-height: 650px;
+  }
+  nav {
+    margin-bottom: -1rem;
+    .search-form {
+      .small-search-btn {
+        margin-left: .2rem;
+      }
+    }
+  }
+
+  .arrow-buttons-flexbox {
+    margin-top: 1.3rem;
+    margin-left: 12%;
+    grid-template-columns: 40px 40px 40px;
+    grid-template-rows: 40px 40px 40px;
+    .center-circle {
+      height: 30px;
+      width: 30px;
+      border-radius: 15px;
+      box-shadow: inset 0 0 8px #111;
+    }
+    .change-pokemon {
+      .arrow-btn {
+        svg {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+  }
+
+  .round-buttons-flexbox {
+    margin-top: 2rem;
+    margin-right: 12%;
+    width: 80px;
+    .button-circle {
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle at 15px 15px, #333, #000);
+    }
   }
 }

@@ -58,7 +58,6 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
       {/* Search for a Pokemon Form */}
       <nav>
         <SearchForm />
-        <ChangePokemon id={id} />
       </nav>
 
       <article style={{ border: `10px solid ${themeColor1}` }}>
@@ -120,14 +119,38 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
                 })}
               </ul>
             </section>
+
             {/* Height & Weight */}
             <section className="measurements">
               {/* Display Converted Height and Weight units */}
               <div className="flexbox">
-                <h3>Height: {metricUnits ? metric.height : imperial.height}</h3>
-                <h3>Weight: {metricUnits ? metric.weight : imperial.weight}</h3>
+                <h3>
+                  Height:{" "}
+                  <span style={{ paddingLeft: "5px" }}>
+                    {" "}
+                    {metricUnits ? metric.height : imperial.height}
+                  </span>
+                </h3>
+                <h3>
+                  Weight:{" "}
+                  <span style={{ paddingLeft: "2px" }}>
+                    {metricUnits ? metric.weight : imperial.weight}
+                  </span>
+                </h3>
               </div>
             </section>
+
+            {/* Pokemon from which currently displayed Pokemon evolves from, if it exists */}
+            {preEvolution ? (
+              <section className="pre-evolution">
+                <hr style={{ backgroundColor: themeColor1, textAlign: "center" }} />
+                <h4>
+                  Evolves from:
+                  {/* <span className="capitalize">{preEvolution.name}</span> */}
+                </h4>
+                <h4 className="capitalize pre-evolution-name">{preEvolution.name}</h4>
+              </section>
+            ) : null}
           </div>
         </div>
 
@@ -144,15 +167,6 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
         >
           <p>{description}</p>
         </section>
-
-        {/* Pokemon from which currently displayed Pokemon evolves from, if it exists */}
-        {preEvolution && (
-          <section className="pre-evolution">
-            <h4>
-              Evolves from <span className="capitalize">{preEvolution.name}</span>
-            </h4>
-          </section>
-        )}
 
         {/* Check if preEvolution or nextEvolution exists otherwise don't display button */}
         {/* {(evolutionChain.preEv || evolutionChain.nextEv) && ( */}
@@ -182,20 +196,23 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
         )}
       </article>
 
-      <div className="control-buttons-flexbox">
-        <div className="arrow-buttons-flexbox">
-          <ChangePokemon id={id} buttonType="next10" arrowDirection="up-btn" />
-          <ChangePokemon id={id} buttonType="previous" arrowDirection="left-btn" />
-          <ChangePokemon id={id} buttonType="next" arrowDirection="right-btn" />
-          <ChangePokemon id={id} buttonType="previous10" arrowDirection="down-btn" />
-          {/* <button className="left-btn arrow-btn"><LeftArrow/></button>
+      {!showEvolutions ? (
+        <div className="control-buttons-flexbox">
+          <div className="arrow-buttons-flexbox">
+            <ChangePokemon id={id} buttonType="next10" arrowDirection="up-btn" />
+            <ChangePokemon id={id} buttonType="previous" arrowDirection="left-btn" />
+            <div className="center-circle" />
+            <ChangePokemon id={id} buttonType="next" arrowDirection="right-btn" />
+            <ChangePokemon id={id} buttonType="previous10" arrowDirection="down-btn" />
+            {/* <button className="left-btn arrow-btn"><LeftArrow/></button>
         <button className="right-btn arrow-btn"><RightArrow/></button> */}
+          </div>
+          <div className="round-buttons-flexbox">
+            <ChangePokemon id={id} buttonType="random" />
+            <ChangePokemon id={id} buttonType="back" />
+          </div>
         </div>
-        <div className="round-buttons-flexbox">
-          <ChangePokemon id={id} buttonType="random" />
-          <ChangePokemon id={id} buttonType="back" />
-        </div>
-      </div>
+      ) : null}
 
       <div className="btn-flexbox">
         {/* Toggle Shiny Button */}

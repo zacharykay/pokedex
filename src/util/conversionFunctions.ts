@@ -10,7 +10,7 @@ export const convertDecimetersToFeet = (decimeters: number): string => {
   const inches: number = decimeters * 3.937;
   const feet: number = inches / 12;
 
-  return `${feet.toFixed()}' ${(inches % 12).toFixed()}"`;
+  return `${feet.toFixed()}'${(inches % 12).toFixed()}"`;
 };
 
 export const convertHectogramsToPounds = (hectograms: number): string => {
