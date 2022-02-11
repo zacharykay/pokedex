@@ -19,6 +19,13 @@ body {
   background-size: 400px;
 }
 
+button:active,
+.button-circle:active {
+  transform: translateX(2px);
+  transform: translateY(2px);
+  opacity: 95%;
+}
+
 .loading-container {
   .loading {
     padding-top: 6rem;
@@ -41,7 +48,7 @@ main {
   margin-left: auto;
   margin-right: auto;
   border-radius: 20px;
-  box-shadow: 0 0 5pt 3pt #111;
+  box-shadow: 0 0 5pt 3pt $almost-black;
   z-index: 10;
 }
 
@@ -49,8 +56,8 @@ article {
   width: 70%;
   position: relative;
   margin: 0 auto;
-  background-color: white;
-  margin-top: 1rem;
+  background-color: $light-white;
+  margin-top: .6rem;
 }
 
 section {
@@ -89,20 +96,21 @@ nav {
     input {
       height: 40px;
       width: 360px;
+      min-width: 360px;
       border-radius: 20px;
       text-align: center;
       font-size: 1rem;
       outline: none;
-      color: #33ff33;
-      font-family: $analog-font;
       letter-spacing: 0.1rem;
-      background-color: #282828;
+      font-family: $analog-font;
+      color: $retro-font-color;
+      background-color: $retro-screen-color;
     }
     .search-btn {
       margin-left: 1rem;
       border-radius: 10px;
-      background-color: black;
-      color: white;
+      background-color: $dark-black;
+      color: $light-white;
       font-family: $analog-font;
       letter-spacing: 0.1rem;
       cursor: pointer;
@@ -118,7 +126,7 @@ nav {
     p.incorrect-search-text {
       display: block;
       font-family: $analog-font;
-      color: #111;
+      color: $almost-black;
     }
   }
 }
@@ -154,8 +162,8 @@ nav {
     height: 40px;
     width: 40px;
     border-radius: 20px;
-    border: 2px solid black;
-    box-shadow: inset 0 0 10px #111;
+    border: 2px solid $dark-black;
+    box-shadow: inset 0 0 10px $almost-black;
     margin: auto;
   }
   .change-pokemon {
@@ -168,7 +176,7 @@ nav {
         height: 50px;
         background-color: $pokedex-color;
         path {
-          fill: black;
+          fill: $dark-black;
         }
       }
     }
@@ -192,16 +200,16 @@ nav {
   .button-circle {
     width: 60px;
     height: 60px;
-    background-color: black;
+    background-color: $dark-black;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    background: radial-gradient(circle at 20px 20px, #333, #000);
+    background: radial-gradient(circle at 20px 20px, $mid-black, $dark-black);
 
     p {
-      color: white;
+      color: $light-white;
       font-family: $pixelated-font;
     }
   }
@@ -227,8 +235,8 @@ nav {
   width: 150px;
   height: 36px;
   font-size: 0.7rem;
-  color: white;
-  background-color: black;
+  color: $light-white;
+  background-color: $dark-black;
   border-radius: 12px;
   font-family: $analog-font;
   letter-spacing: 0.1rem;
@@ -237,15 +245,15 @@ nav {
 
 // Pokedex Embellishments
 .blue-ball {
-  background-color: #27abfc;
+  background-color: $pokedex-orb-blue;
   position: absolute;
   top: 10px;
   left: 10px;
   width: 100px;
   height: 100px;
   border-radius: 50px;
-  border: 5px solid #d6d6d6;
-  background: radial-gradient(circle at 30px 30px, #27abfc, #000);
+  border: 5px solid $pokedex-orb-border;
+  background: radial-gradient(circle at 30px 30px, $pokedex-orb-blue, $dark-black);
 }
 
 // *****************************************  Sections  ******************************************** //
@@ -258,7 +266,7 @@ nav {
   width: 85%;
   border: 3px darkgray solid;
   border-radius: 5px;
-  box-shadow: 0 0 3pt 1pt black;
+  box-shadow: 0 0 3pt 1pt $dark-black;
   box-sizing: content-box;
   font-family: $pixelated-font;
   .flexbox {
@@ -317,12 +325,12 @@ nav {
     li {
       margin: 0.5rem;
       border-radius: 5px;
-      border: 1px solid black;
-      box-shadow: 0 0 2px 1px black;
+      border: 1px solid $dark-black;
+      box-shadow: 0 0 2px 1px $dark-black;
       font-weight: 800;
       text-transform: uppercase;
       font-size: 1.1rem;
-      color: white;
+      color: $light-white;
       text-align: center;
       font-family: Roboto, sans-serif;
       min-width: 3rem;
@@ -348,7 +356,7 @@ nav {
   border-radius: 5px;
   margin: 0.5rem;
   padding: 0.5rem;
-  box-shadow: 0 0 3pt 2pt black;
+  box-shadow: 0 0 3pt 2pt $dark-black;
   p {
   }
 }
@@ -360,10 +368,10 @@ nav {
   border-radius: 5px;
   display: block;
   font-family: $pixelated-font;
-  color: black;
+  color: $dark-black;
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 0 2pt 1pt #333;
+  box-shadow: 0 0 2pt 1pt $mid-black;
 }
 
 // Pre-Evolution -------- Pokemon that evolves into current Pokemon, only visible if it exists
@@ -405,7 +413,7 @@ nav {
   overflow-y: hidden;
   white-space: nowrap;
   &::-webkit-scrollbar {
-    background-color: #fff;
+    background-color: $light-white;
   }
   // &::-webkit-scrollbar-track {
   //   box-shadow: inset 0 0 5px grey;
@@ -414,8 +422,8 @@ nav {
   &::-webkit-scrollbar-thumb {
     background-color: $pokedex-color;
     border-radius: 10px;
-    border: 2px solid black;
-    outline: 4px solid white;
+    border: 2px solid $dark-black;
+    outline: 4px solid $light-white;
   }
   // Single Evolution + Arrow Container
   .evolution-container {
@@ -425,7 +433,7 @@ nav {
     &:hover {
       cursor: pointer;
 
-      background-color: #eff;
+      background-color: $hover-blue-background;
     }
   }
   // Single Evolution Container ----- Clickable element linked to Pokedex entry
@@ -434,18 +442,21 @@ nav {
     padding-right: .5rem;
     padding-bottom: .5rem;
     text-align: center;
-    img {
-    }
-    p {
-    }
+    font-family: $pokemon-font;
+    font-size: 1.2rem;
+    // img {
+    // }
+    // p {
+    // }
   }
 
   // Arrow between Evolutions
-  .arrow {
-  }
+  // .arrow {
+  // }
 }
 
-@media screen and (max-width: 800px) {
+// 800px
+@media screen and (max-width: $breakpoint-1) {
   main {
     max-height: 800px;
   }
@@ -456,7 +467,7 @@ nav {
     width: 70px;
     height: 70px;
     border-radius: 35px;
-    background: radial-gradient(circle at 21px 21px, #27abfc, #000);
+    background: radial-gradient(circle at 21px 21px, $pokedex-orb-blue, $dark-black);
   }
   .titlecard {
     .flexbox {
@@ -558,6 +569,9 @@ nav {
       input {
         margin-left: -.5rem;
       }
+      .search-btn {
+        margin-left: 1.6rem;
+      }
     }
   }
   .arrow-buttons-flexbox {
@@ -575,7 +589,12 @@ nav {
   }
 }
 
-@media screen and (max-width: 650px) {
+// 650px
+@media screen and (max-width: $breakpoint-2) {
+  main {
+    min-height: 750px;
+    max-height: 750px;
+  }
   nav {
     .search-form {
       form {
@@ -586,6 +605,7 @@ nav {
         margin-left: .2rem;
         height: 50px;
         width: 270px;
+        min-width: 270px;
         font-size: .8rem;
         border-radius: 35px;
       }
@@ -663,7 +683,8 @@ nav {
   }
 }
 
-@media screen and (max-width: 500px) {
+// 500px
+@media screen and (max-width: $breakpoint-3) {
   main {
     min-height: 700px;
     max-height: 700px;
@@ -681,7 +702,8 @@ nav {
       input {
         margin-left: .8rem;
         height: 50px;
-        width: 180px;
+        width: 220px;
+        min-width: 220px;
         font-size: .6rem;
         border-radius: 30px;
       }
@@ -689,6 +711,7 @@ nav {
         border-radius: 10px;
         font-size: .7rem;
         margin-left: 1rem;
+        display: none;
       }
       button {
         width: 70px;
@@ -696,6 +719,23 @@ nav {
       }
       p.incorrect-search-text {
         font-size: .8rem;
+      }
+      .small-search-btn {
+        margin-top: -1rem;
+        border-radius: 25px;
+        font-size: .7rem;
+        margin-left: 2rem;
+        margin-right: .2rem;
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        min-height: 50px;
+        align-self: flex-end;
+        display: block;
+        background-color: $dark-black;
+        color: $light-white;
+        font-family: $analog-font;
+        cursor: pointer;
       }
     }
   }
@@ -769,7 +809,19 @@ nav {
   }
 }
 
-@media screen and (max-width: 400px) {
+// 450px
+@media screen and (max-width: $breakpoint-4) {
+  nav {
+    .search-form {
+      .small-search-btn {
+        margin-left: .6rem;
+      }
+    }
+  }
+}
+
+// 400px
+@media screen and (max-width: $breakpoint-5) {
   main {
     min-height: 720px;
     max-height: 720px;
@@ -788,35 +840,21 @@ nav {
         justify-content: space-around;
       }
       input {
-        margin-left: 0;
+        margin-left: 1rem;
         height: 40px;
         width: 180px;
+        min-width: 180px;
         font-size: .6rem;
         border-radius: 30px;
         align-self: flex-bottom;
       }
-      .search-btn {
-        display: none;
-      }
-      .small-search-btn {
-        margin-top: -1rem;
-        border-radius: 22px;
-        font-size: .7rem;
-        margin-left: 2rem;
-        margin-right: .2rem;
-        width: 44px;
-        height: 44px;
-        min-width: 44px;
-        min-height: 44px;
-        align-self: flex-end;
-        display: block;
-        background-color: black;
-        color: white;
-        font-family: $analog-font;
-        cursor: pointer;
-      }
+
       p.incorrect-search-text {
         font-size: .75rem;
+      }
+      .small-search-btn {
+        margin-left: 1rem;
+        margin-top: -.4rem;
       }
     }
   }
@@ -824,8 +862,8 @@ nav {
     width: 50px;
     height: 50px;
     border-radius: 25px;
-    background: radial-gradient(circle at 15px 15px, #27abfc, #000);
-    border: 4px solid #d6d6d6;
+    background: radial-gradient(circle at 15px 15px, $pokedex-orb-blue, $dark-black);
+    border: 4px solid $pokedex-orb-border;
   }
 
   .control-buttons-flexbox {
@@ -846,8 +884,8 @@ nav {
     width: 120px;
     height: 36px;
     font-size: 0.55rem;
-    color: white;
-    background-color: black;
+    color: $light-white;
+    background-color: $dark-black;
     border-radius: 12px;
     font-family: $analog-font;
     letter-spacing: 0.1rem;
@@ -855,7 +893,8 @@ nav {
   }
 }
 
-@media screen and (max-width: 380px) {
+// 380px
+@media screen and (max-width: $breakpoint-6) {
   main {
     min-height: 650px;
     max-height: 650px;
@@ -864,6 +903,11 @@ nav {
     margin-bottom: -1rem;
     .search-form {
       .small-search-btn {
+        border-radius: 22px;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
         margin-left: .2rem;
       }
     }
@@ -878,7 +922,7 @@ nav {
       height: 30px;
       width: 30px;
       border-radius: 15px;
-      box-shadow: inset 0 0 8px #111;
+      box-shadow: inset 0 0 8px $almost-black;
     }
     .change-pokemon {
       .arrow-btn {
@@ -897,7 +941,7 @@ nav {
     .button-circle {
       width: 40px;
       height: 40px;
-      background: radial-gradient(circle at 15px 15px, #333, #000);
+      background: radial-gradient(circle at 15px 15px, $mid-black, $dark-black);
     }
   }
 }

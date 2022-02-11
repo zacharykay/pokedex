@@ -58,7 +58,7 @@ const SearchForm = () => {
       </form>
       {searchError && (
         <p className="incorrect-search-text">
-          Pokemon does not exist... Please check spelling or try a number between 1 - 898.
+          Check spelling or try a number from 1 - 898.
         </p>
       )}
     </div>
