@@ -572,7 +572,6 @@ nav {
 
   .btn-flexbox {
     column-gap: 2rem;
-    bottom: 40px;
   }
 }
 
@@ -666,8 +665,8 @@ nav {
 
 @media screen and (max-width: 500px) {
   main {
-    min-height: 775px;
-    max-height: 800px;
+    min-height: 700px;
+    max-height: 700px;
   }
   article {
     width: 80%;
