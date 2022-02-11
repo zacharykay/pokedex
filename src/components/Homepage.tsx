@@ -7,8 +7,6 @@ import SearchForm from "./SearchForm";
 import { ChangePokemon } from "./ChangePokemon";
 
 import pokeball from "../assets/8-bit-pokeball.png";
-// import {ReactComponent as LeftArrow} from "../icons/svg/arrow-left-svgrepo-com.svg"
-// import {ReactComponent as RightArrow} from "../icons/svg/arrow-right-svgrepo-com.svg"
 
 import { pokemonTypes as pokeTypes } from "../data/pokemonTypes";
 
@@ -29,7 +27,6 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
   const { showEvolutions, setShowEvolutions, showShiny, setShowShiny } = useDataContext();
 
   const [ metricUnits, setMetricUnits ] = useState(false);
-  // const [ showShiny, setShowShiny ] = useState(false);
 
   // Imported Function with custom names for returning height and weight
   const [ metric, imperial ] = convertUnits(height, weight);
@@ -64,9 +61,6 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
         {/* Titlecard */}
         <section className="titlecard">
           <div className="flexbox" style={{ backgroundColor: themeColor1 }}>
-            {/* // style={{ */}
-            {/* //   borderBottom: `10px solid ${themeColor2 ? themeColor2 : themeColor1}`,
-        // }} */}
             <img className="pokeball-sprite" src={pokeball} alt="8-bit pokeball" />
             <div className="vertically-center">
               <h1 className="capitalize">
@@ -144,10 +138,7 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
             {preEvolution ? (
               <section className="pre-evolution">
                 <hr style={{ backgroundColor: themeColor1, textAlign: "center" }} />
-                <h4>
-                  Evolves from:
-                  {/* <span className="capitalize">{preEvolution.name}</span> */}
-                </h4>
+                <h4>Evolves from:</h4>
                 <h4 className="capitalize pre-evolution-name">{preEvolution.name}</h4>
               </section>
             ) : null}
@@ -169,7 +160,6 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
         </section>
 
         {/* Check if preEvolution or nextEvolution exists otherwise don't display button */}
-        {/* {(evolutionChain.preEv || evolutionChain.nextEv) && ( */}
         {evolutionChain.evolutions.length > 1 && (
           <section className="evolutionary-tree">
             {/* Toggle to Show / Hide Pokemon's evolutionary line in order with sprites (images) */}
@@ -179,7 +169,6 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
               onClick={(e) => {
                 e.preventDefault();
                 setShowEvolutions(!showEvolutions);
-                // console.log("evolutionChain", evolutionChain);
               }}
             >
               {showEvolutions ? "Hide Evolutions" : "See Evolutions"}
@@ -204,8 +193,6 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
             <div className="center-circle" />
             <ChangePokemon id={id} buttonType="next" arrowDirection="right-btn" />
             <ChangePokemon id={id} buttonType="previous10" arrowDirection="down-btn" />
-            {/* <button className="left-btn arrow-btn"><LeftArrow/></button>
-        <button className="right-btn arrow-btn"><RightArrow/></button> */}
           </div>
           <div className="round-buttons-flexbox">
             <ChangePokemon id={id} buttonType="random" />

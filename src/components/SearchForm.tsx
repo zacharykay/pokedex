@@ -40,7 +40,6 @@ const SearchForm = () => {
   return (
     <div className="search-form">
       <form onSubmit={(e) => e.preventDefault()}>
-        {/* <label htmlFor="search">Search for a Pokemon</label> */}
         <input
           type="text"
           placeholder="Search Pokemon by Name or #"

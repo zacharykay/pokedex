@@ -14,13 +14,19 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('/icons/png/pokemon-gotta-catch-em-all.png');
+  background-image: url('/assets/pokemon-gotta-catch-em-all.png');
   background-repeat: repeat;
   background-size: 400px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+.loading-container {
+  .loading {
+    padding-top: 6rem;
+    font-size: 5rem;
+    letter-spacing: 2px;
+    text-align: center;
+    font-family: $pokemon-font;
+  }
 }
 
 main {

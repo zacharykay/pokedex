@@ -10,7 +10,6 @@ export const fetchEvolutionData = async (
   const evolutionUrl: string = descData.evolution_chain.url;
   const evolutionResponse = await axios.get(evolutionUrl);
   const evolutionData = await evolutionResponse.data;
-  // console.log("EVOLUTION DATA", evolutionData);
 
   let firstEvolution, secondEvolution, thirdEvolution;
 
@@ -128,7 +127,6 @@ export const fetchEvolutionData = async (
 
       const res = await axios.get(pokemonDataFetch(id));
       const data = await res.data;
-      // console.log("EV DATA", data);
       const image_url = data.sprites.front_default;
 
       evolutions[index].id = id;
