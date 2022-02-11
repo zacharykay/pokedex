@@ -1,5 +1,5 @@
 import axios from "axios";
-import Evolution from "../components/Evolution";
+import { Evo } from "../components/Evolution";
 
 export const fetchEvolutionData = async (
   data: any,
@@ -41,6 +41,7 @@ export const fetchEvolutionData = async (
         url: evolution.species.url,
         multiple: true,
       });
+      return evolution;
     });
   }
 
@@ -69,7 +70,7 @@ export const fetchEvolutionData = async (
   }
 
   // Combine evolutions and spread in multiple evolutions
-  const unfilteredEvolutions: Evolution[] = [
+  const unfilteredEvolutions: Evo[] = [
     firstEvolution,
     secondEvolution,
     thirdEvolution,
@@ -101,6 +102,7 @@ export const fetchEvolutionData = async (
           return evolution;
         }
       }
+      return;
     }
   );
 

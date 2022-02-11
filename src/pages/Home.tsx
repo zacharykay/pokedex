@@ -100,6 +100,7 @@ const Home: FC<Props> = () => {
       setShowShiny(false);
       setShowEvolutions(false);
     },
+    //eslint-disable-next-line
     [ searchTerm, setSearchTerm ]
   );
 

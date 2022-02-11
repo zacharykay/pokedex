@@ -1,14 +1,14 @@
 import { FC } from "react";
 import { useDataContext } from "../contexts/data_context";
 
-interface Evolution {
+export interface Evo {
   name: string;
   img: string;
   id: number;
   // arrow: string | null;
 }
 
-const Evolution: FC<Evolution> = (evolution) => {
+const Evolution: FC<Evo> = (evolution) => {
   const { setSearchTerm } = useDataContext();
 
   const { name, img, id } = evolution;

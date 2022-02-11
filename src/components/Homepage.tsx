@@ -82,7 +82,7 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
               {
                 <img
                   src={sprites.front_default}
-                  alt="Pokemon Sprite Image"
+                  alt="Pokemon Sprite"
                   style={{ display: showShiny ? "none" : "block" }}
                   className="pokemon-sprite"
                 />
@@ -90,7 +90,7 @@ const Homepage: FC<PokemonData> = (pokemonData) => {
               {sprites.front_shiny && (
                 <img
                   src={sprites.front_shiny}
-                  alt="Pokemon Shiny Sprite Image"
+                  alt="Pokemon Shiny Sprite"
                   style={{ display: showShiny ? "block" : "none" }}
                 />
               )}
